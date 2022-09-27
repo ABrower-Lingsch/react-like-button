@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+
 import './App.css';
 
+import { useState } from 'react';
+
+
 function App() {
+
+  const [count, setCount] = useState(0);
+
+  const handleClick = (e) => {
+    setCount(count + 1);
+  }
+
+  const updateWord = () => {
+    if (count === 0 || count > 1) {
+      return `${count} Likes`
+    } else {
+      return `${count} Like`
+    };
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button id="likeButton" onClick={handleClick} >{updateWord()}</button>
     </div>
   );
 }
+
 
 export default App;
